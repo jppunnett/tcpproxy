@@ -1,6 +1,6 @@
 # Tcpproxy
 
-TODO: Write a gem description
+tcpproxy spies on TCP connections. Use it to debug issues between a client and server.
 
 ## Installation
 
@@ -18,9 +18,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+In the following example, tcpproxy listens on port 8888 for connections to google.com. At the end of the session, you'll find details about the conversation in a file named, tcpproxy_datetime.log, where datetime is the date and time of the conversation between client and server.
+	`ruby tcpproxy google.com:80`
+  
 
 ## Contributing
+
+Too simple to really make a contribution, but if you wish, please:
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
