@@ -24,7 +24,7 @@ In the following example, tcpproxy listens on port 8888 for connections to googl
 
 ## Contributing
 
-Too simple to really make a contribution, but if you wish, please:
+This application is too simple to really make a contribution, but if you wish, please:
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
