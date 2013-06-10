@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["James Punnett"]
   spec.email         = ["jppunnett@yahoo.com"]
   spec.description   = %q{Spies on TCP traffic between two hosts.}
-  spec.summary       = %q{Spies on TCP traffic between two hosts.}
-  spec.homepage      = ""
+  spec.summary       = %q{View data exchanged between two hosts.}
+  spec.homepage      = "https://github.com/jppunnett/tcpproxy"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
