@@ -14,6 +14,7 @@ class App
     # the options Hash
     puts endpoint
     puts options['local-port']
+    puts options['local-port'].is_a? Integer
   end
 
   # supplemental methods here
@@ -26,7 +27,7 @@ class App
   options['local-port'] = Tcpproxy::DEFAULT_LISTEN_PORT
 
   # Accept flags via:
-  on("-p PORT", "--local-port", "Port that tcpproxy listens on for incoming connections")
+  on("-p PORT", "--local-port", "Port that tcpproxy listens on for incoming connections", Integer)
   # options[flag] will contain VAL
 
   # Specify switches via:
