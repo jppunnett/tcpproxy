@@ -3,7 +3,6 @@ results.html
 pkg
 html
 Gemfile.lock
-bin/
 tmp/
 *~
 *.rdoc

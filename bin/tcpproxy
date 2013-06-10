@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'methadone'
+require 'tcpproxy.rb'
+
+class App
+  include Methadone::Main
+  include Methadone::CLILogging
+
+  main do |endpoint|
+    # your program code here
+    # You can access CLI options via
+    # the options Hash
+    puts endpoint
+    puts options['local-port']
+  end
+
+  # supplemental methods here
+
+  # Declare command-line interface here
+
+  description "Spies on TCP traffic between two hosts"
+
+  # Flag defaults
+  options['local-port'] = Tcpproxy::DEFAULT_LISTEN_PORT
+
+  # Accept flags via:
+  on("-p PORT", "--local-port", "Port that tcpproxy listens on for incoming connections")
+  # options[flag] will contain VAL
+
+  # Specify switches via:
+  # on("--[no-]switch","Some switch")
+  #
+  # Or, just call OptionParser methods on opts
+  #
+  # Require an argument
+  arg :endpoint, "Host name and port of remote service. E.g. google.com:80" 
+  #
+  # # Make an argument optional
+  # arg :optional_arg, :optional
+
+  version Tcpproxy::VERSION
+
+  use_log_level_option
+
+  go!
+end
