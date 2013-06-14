@@ -9,12 +9,8 @@ class App
   include Methadone::CLILogging
 
   main do |endpoint|
-    # your program code here
-    # You can access CLI options via
-    # the options Hash
-    puts endpoint
-    puts options['local-port']
-    puts options['local-port'].is_a? Integer
+    server = Tcpproxy::ProxyServer.new(options['local-port'], endpoint)
+    server.start.join
   end
 
   # supplemental methods here
