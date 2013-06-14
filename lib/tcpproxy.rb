@@ -15,7 +15,7 @@ module Tcpproxy
     
     def serve(io)
       #  Connect to the endpoint
-      ep = TCPSocket.open(get_hostname(@endpoint_name), get_port(@endpoint_name))
+      ep = TCPSocket.open(get_endpoint_hostname(), get_endpoint_port())
       
       # Start two threads:
       #   One that reads data from the client and passes it to the endpoint
@@ -26,6 +26,15 @@ module Tcpproxy
       
       stop
     end
+    
+    private
+    
+    def get_endpoint_hostname
+      @endpoint_name.split(':', 1)[0]
+    end
         
+    def get_endpoint_port
+      @endpoint_name.split(':', 2)[1]
+    end
   end
 end

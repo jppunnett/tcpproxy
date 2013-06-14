@@ -30,8 +30,9 @@ class App
   # on("--[no-]switch","Some switch")
   #
   # Or, just call OptionParser methods on opts
-  #
+
   # Require an argument
+  #   TODO: Check if endpoint matches hostname|ip followed by a ":" and port.  
   arg :endpoint, "Host name and port of remote service. E.g. google.com:80" 
   #
   # # Make an argument optional
