@@ -1,4 +1,5 @@
 require "tcpproxy/version"
+require 'methadone'
 require "gserver"
 require "socket"
 
@@ -7,6 +8,8 @@ module Tcpproxy
   DEFAULT_LISTEN_PORT = 10001
   class ProxyServer < GServer
     
+    include Methadone::CLILogging
+    
     def initialize(listen_port, endpoint_name)
       super(listen_port)
       @listen_port = listen_port
@@ -14,23 +17,22 @@ module Tcpproxy
     end
     
     def serve(io)
-      #  Connect to the endpoint
-      ep = TCPSocket.open(get_endpoint_hostname(), get_endpoint_port())
       
-      # Start two threads:
-      #   One that reads data from the client and passes it to the endpoint
-      #   One that reads data from the endpoint and passes it to the client
-      
-      ep.close
-      # Stop when there's no more data to exchange.
-      
+      host = get_endpoint_hostname
+      port = get_endpoint_port
+      debug("Connecting to Host: #{host}, Port: #{port}")
+#      ep_sock = TCPSocket.open(host, port)
+#      ep_sock.close
+#      
+      debug("Stopping.")
       stop
+      debug("Stopped.")
     end
     
     private
     
     def get_endpoint_hostname
-      @endpoint_name.split(':', 1)[0]
+      @endpoint_name.split(':', 2)[0]
     end
         
     def get_endpoint_port
