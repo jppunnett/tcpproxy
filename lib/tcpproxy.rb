@@ -44,7 +44,15 @@ module Tcpproxy
     end
     
     def ProxyServer.copy_sock_data(from_sock, to_sock)
-      
+      done = false
+      while !done
+        begin
+          buf = from_sock.readpartial(1024)
+        rescue EOFError
+          done = true
+        end
+        to_sock << buf if buf
+      end
     end
 
     private
