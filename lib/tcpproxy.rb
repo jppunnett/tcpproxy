@@ -9,6 +9,7 @@ module Tcpproxy
   class ProxyServer < GServer
 
     include Methadone::CLILogging
+    
     def initialize(listen_port, endpoint_name)
       super(listen_port)
       @listen_port = listen_port
@@ -17,17 +18,18 @@ module Tcpproxy
 
     def serve(io)
       host, port = get_endpoint_parts
+      
       begin
         ep = TCPSocket.new(host, port)
         
         # Copy data from client to endpoint
         cli_2_ep = Thread.new(io, ep) do |from, to|
-          ProxyServer.copy_sock_data(from, to)
+          copy_sock_data(from, to)
         end
 
         # Copy data from endpoint to client
         ep_2_cli = Thread.new(ep, io) do |from, to|
-          ProxyServer.copy_sock_data(from, to)
+          copy_sock_data(from, to)
         end
         
         cli_2_ep.join
@@ -43,7 +45,9 @@ module Tcpproxy
       end
     end
     
-    def ProxyServer.copy_sock_data(from_sock, to_sock)
+    private
+
+    def copy_sock_data(from_sock, to_sock)
       done = false
       while !done
         begin
@@ -54,8 +58,6 @@ module Tcpproxy
         to_sock << buf if buf
       end
     end
-
-    private
 
     def get_endpoint_parts
       @endpoint_name.split(':', 2)
