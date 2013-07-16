@@ -1,23 +1,54 @@
-= tcpproxy - DESCRIBE YOUR GEM
+= tcpproxy - A very simple TCP/IP proxy server in Ruby.
 
-Author::  YOUR NAME (YOUR EMAIL)
-Copyright:: Copyright (c) 2013 YOUR NAME
+Author::  James Punnett (jppunnett@yahoo.com)
+Copyright:: Copyright (c) 2013 James Punnett
 
 
 License:: mit, see LICENSE.txt
 
+tcpproxy was inspired by Alexander Demin's article:
+{The Beauty of Concurrency in Go}[http://pragprog.com/magazines/2012-06/the-beauty-of-concurrency-in-go]
 
+tcpproxy is a very simple Ruby program that implements a TCP/IP proxy server.
+This is not production software :-) I built it to explore a number of Ruby features:
+* Threads
+* Sockets
+* Command Line Interfaces (CLI)
 
-DESCRIBE YOUR GEM HERE
+For CLI, I used the excellent David Copeland's {Methadone Library}[https://github.com/davetron5000/methadone].
+Buy the book as well: {Build Awesome Command Line Applications in Ruby}[http://pragprog.com/book/dccar/build-awesome-command-line-applications-in-ruby].
 
 == Links
 
-* {Source on Github}[LINK TO GITHUB]
+* {Source on Github}[https://github.com/jppunnett/tcpproxy]
 * RDoc[LINK TO RDOC.INFO]
 
 == Install
+Add this line to your application's Gemfile:
+
+    gem 'tcpproxy'
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install tcpproxy
+
 
 == Examples
+In the following example, tcpproxy listens on port 8888 for connections to google.com. At the end of the session, you'll find details about the conversation in a file named, tcpproxy_datetime.log, where datetime is the date and time of the conversation between client and server.
+
+   ruby tcpproxy google.com:80
+   
 
 == Contributing
+This application is too simple to really make a contribution, but if you wish, please:
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
 
