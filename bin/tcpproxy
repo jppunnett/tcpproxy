@@ -12,7 +12,7 @@ class App
     @server = Tcpproxy::ProxyServer.new(options['local-port'], endpoint)
     
     Signal.trap("INT") do
-      debug("Stopping the server immediately.")
+      info("Stopping the server immediately.")
       @server.stop
     end
     
@@ -48,6 +48,8 @@ class App
   version Tcpproxy::VERSION
 
   use_log_level_option
+  
+  leak_exceptions(true)
 
   go!
 end
