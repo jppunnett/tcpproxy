@@ -15,28 +15,17 @@ This is not production software :-) I built it to explore a number of Ruby featu
 
 For CLI, I used David Copeland's excellent [Methadone](https://github.com/davetron5000/methadone) along with his wonderful book, [Build Awesome Command Line Applications in Ruby](http://pragprog.com/book/dccar/build-awesome-command-line-applications-in-ruby]).
 
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'tcpproxy'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install tcpproxy
-
-
 ## Usage
 
 In the following example, tcpproxy listens on port 8888 for connections to google.com. At the end of the session, you'll find details about the conversation in a file named, tcpproxy_datetime.log, where datetime is the date and time of the conversation between client and server.
 
 	ruby tcpproxy google.com:80
   
+## Installation
+
+Install it yourself as (TODO: Upload to RubyGems):
+
+    $ gem install tcpproxy
 
 ## Contributing
 

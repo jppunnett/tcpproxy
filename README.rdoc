@@ -23,25 +23,16 @@ Buy the book as well: {Build Awesome Command Line Applications in Ruby}[http://p
 * {Source on Github}[https://github.com/jppunnett/tcpproxy]
 * RDoc[LINK TO RDOC.INFO]
 
-== Install
-Add this line to your application's Gemfile:
-
-    gem 'tcpproxy'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install tcpproxy
-
-
 == Examples
 In the following example, tcpproxy listens on port 8888 for connections to google.com. At the end of the session, you'll find details about the conversation in a file named, tcpproxy_datetime.log, where datetime is the date and time of the conversation between client and server.
 
    ruby tcpproxy google.com:80
    
+== Install
+
+Or install it yourself as (TODO):
+
+    $ gem install tcpproxy
 
 == Contributing
 This application is too simple to really make a contribution, but if you wish, please:
@@ -51,4 +42,3 @@ This application is too simple to really make a contribution, but if you wish, p
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
-
