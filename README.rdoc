@@ -1,4 +1,4 @@
-= tcpproxy - A very simple TCP/IP proxy server written in Ruby.
+= tcpproxy - A simple TCP/IP proxy server written in Ruby.
 
 Author::  James Punnett (jppunnett@yahoo.com)
 Copyright:: Copyright (c) 2013 James Punnett
