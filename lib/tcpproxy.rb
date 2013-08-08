@@ -16,26 +16,26 @@ module Tcpproxy
       @endpoint_name = endpoint_name
     end
 
-    def serve(io)
+    def serve (client)
       host, port = get_endpoint_parts
       ep = TCPSocket.new(host, port)
       
       begin
         ConvoLogger.new do |l|
         
-          cli_peeraddr = io.peeraddr[3] + ":" + io.peeraddr[1].to_s
+          cli_peeraddr =client.peeraddr[3] + ":" +client.peeraddr[1].to_s
           ep_peeraddr = ep.peeraddr[3] + ":" + ep.peeraddr[1].to_s
 
           debug("Convo starting: #{cli_peeraddr} <--> #{ep_peeraddr}")
           l.log("Convo starting: #{cli_peeraddr} <--> #{ep_peeraddr}")
           
           # Copy data from client to endpoint
-          cli_2_ep = Thread.new(io, ep, l) do |from, to, logger|
+          cli_2_ep = Thread.newclient, ep, l) do |from, to, logger|
             copy_sock_data(from, to, l)
           end
 
           # Copy data from endpoint to client
-          ep_2_cli = Thread.new(ep, io, l) do |from, to, logger|
+          ep_2_cli = Thread.new(ep,client, l) do |from, to, logger|
             copy_sock_data(from, to, l)
           end
           
@@ -44,7 +44,6 @@ module Tcpproxy
           
           debug("Convo ending: #{cli_peeraddr} <--> #{ep_peeraddr}")
           l.log("Convo ending: #{cli_peeraddr} <--> #{ep_peeraddr}")
-          
         end
       rescue => ex
         debug("#{ex}")
